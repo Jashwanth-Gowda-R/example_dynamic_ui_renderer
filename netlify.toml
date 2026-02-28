@@ -1,14 +1,27 @@
-# netlify.toml
-
 [build]
-  command = "flutter build web --release"
+  command = """
+  # Install Flutter (version specified in environment)
+  git clone https://github.com/flutter/flutter.git -b ${FLUTTER_VERSION} --depth 1 &&
+  export PATH="$PATH:$PWD/flutter/bin" &&
+  
+  # Verify Flutter installation
+  flutter doctor -v &&
+  
+  # Build your app
+  flutter clean &&
+  flutter pub get &&
+  flutter build web --release
+  """
   publish = "build/web"
+
+[build.environment]
+  FLUTTER_VERSION = "3.24.5"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Environment variables (if needed)
-[build.environment]
-  FLUTTER_VERSION = "3.16.0"
+# Cache Flutter SDK for faster builds
+[[build.cache]]
+  path = "flutter"

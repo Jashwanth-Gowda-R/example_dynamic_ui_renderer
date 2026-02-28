@@ -1,27 +1,20 @@
 [build]
   command = """
-  # Install Flutter (version specified in environment)
-  git clone https://github.com/flutter/flutter.git -b ${FLUTTER_VERSION} --depth 1 &&
+  # Install latest stable Flutter
+  git clone https://github.com/flutter/flutter.git -b stable --depth 1 &&
   export PATH="$PATH:$PWD/flutter/bin" &&
   
-  # Verify Flutter installation
-  flutter doctor -v &&
-  
-  # Build your app
+  # Build
   flutter clean &&
   flutter pub get &&
   flutter build web --release
   """
   publish = "build/web"
 
-[build.environment]
-  FLUTTER_VERSION = "3.24.5"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Cache Flutter SDK for faster builds
 [[build.cache]]
   path = "flutter"

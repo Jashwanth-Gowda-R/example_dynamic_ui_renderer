@@ -1,0 +1,14 @@
+# netlify.toml
+
+[build]
+  command = "flutter build web --release"
+  publish = "build/web"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (if needed)
+[build.environment]
+  FLUTTER_VERSION = "3.16.0"

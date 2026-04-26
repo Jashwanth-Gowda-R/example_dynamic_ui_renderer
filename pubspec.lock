@@ -52,9 +52,10 @@ packages:
   dynamic_ui_renderer:
     dependency: "direct main"
     description:
-      path: "../dynamic_ui_renderer"
-      relative: true
-    source: path
+      name: dynamic_ui_renderer
+      sha256: "787d5f5c7651f5b9218829293041737146b5fdda8dc6d8bb0a9911178da7e8e8"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.0"
   fake_async:
     dependency: transitive
